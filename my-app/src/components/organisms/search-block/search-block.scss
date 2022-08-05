@@ -1,0 +1,24 @@
+@import '../../_settings/variables';
+
+.o-search-block {
+    background: url(/assets/images/search-block.png);
+    min-height: 392px;
+    padding: 18px 64px;
+    margin-bottom: 16px;
+}
+
+.o-search-block__add {
+    display: flex;
+    justify-content: space-between;
+}
+
+.o-search-block__logo {
+    color: $infra-red;
+    font-family: 'montserrat-regular';
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.o-search-block__title {
+    margin-bottom: 40px;
+}

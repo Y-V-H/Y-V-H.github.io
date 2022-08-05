@@ -1,12 +1,20 @@
 import React from "react";
-import "./style.scss"
+import './components/index.scss'
+import './components/atoms/buttons/_buttons.scss'
+
+import { SearchBlock } from './components/organisms/search-block/search-block';
+import { FilmsBlock } from './components/organisms/films-block/films-block';
+
+import { ErrorBoundary } from './error-boundary/error-boundary';
 
 function App() {
-    // console.log(process.env.TEST)
     return (
-        <div>
-            <h1>My App</h1>
-        </div>
+        <ErrorBoundary>
+            <SearchBlock />
+            <FilmsBlock />
+            <aside></aside>
+
+        </ErrorBoundary>
     )
 }
 

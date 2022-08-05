@@ -1,0 +1,27 @@
+@import './../../_settings/variables';
+
+@mixin input-text-style {
+    font-family: 'montserrat-regular', sans-serif;
+    color: $white;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.a-input {
+    border: none;
+    border-radius: 5px;
+    padding: 16px 18px;
+    background: rgba($dark-liver, .8);
+
+    @include input-text-style;
+}
+
+.a-input::placeholder {
+    opacity: 0.3;
+
+    @include input-text-style;
+}
+
+// .input:focus {
+
+// }

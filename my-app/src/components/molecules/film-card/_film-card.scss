@@ -1,0 +1,63 @@
+@import '../../_settings/variables';
+
+@mixin caption-text {
+    font-family: 'montserrat-regular';
+    color: $white;
+    opacity: .5;
+    font-size: 14px;
+}
+
+.m-film-card {
+    max-width: 33.33%;
+    width: 100%;
+}
+
+.m-film-card__img-wr {
+    width: 100%;
+    position: relative;
+}
+
+.m-film-card__btn-info {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: none;
+}
+
+.m-film-card__img {
+    width: 100%;
+}
+
+.m-film-card__img:hover+.m-film-card__btn-info {
+    display: flex;
+}
+
+.m-film-card__caption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.m-film-card__caption-title {
+    flex-basis: 70%;
+}
+
+.m-film-card__caption-year {
+    width: 62px;
+    height: 24px;
+    border: 1px solid $granite-gray;
+    margin-left: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+
+    @include caption-text;
+}
+
+.m-film-card__caption-category {
+    width: 100%;
+
+    @include caption-text;
+}
