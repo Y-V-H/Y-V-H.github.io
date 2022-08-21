@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types';
 import React from "react";
+
+type ButtonInfoProps = {
+    className?: string
+}
 
 export const ButtonInfo = ({
     className
-}) => {
+}: ButtonInfoProps) => {
     return (
         <button className={`a-button-info ${className ? className : ''}`}>
             <span>.</span>
@@ -11,8 +14,4 @@ export const ButtonInfo = ({
             <span>.</span>
         </button>
     )
-}
-
-ButtonInfo.propTypes = {
-    className: PropTypes.string,
 }

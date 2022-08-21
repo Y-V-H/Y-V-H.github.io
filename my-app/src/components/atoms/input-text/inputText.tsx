@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
+type InputTextProps = {
+    className?: string;
+    defaultInputValue?: string;
+    placeholder?: string;
+}
 
 export const InputText = ({
     className,
     defaultInputValue,
     placeholder
-}) => {
-    const [inputValue, setInputValue] = useState();
-    const handlerChange = (e) => setInputValue(e.target.value);
+}: InputTextProps) => {
+    const [inputValue, setInputValue] = useState("");
+    const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
     return (
         <input
@@ -18,10 +23,4 @@ export const InputText = ({
             onChange={handlerChange}
         />
     )
-}
-
-InputText.propTypes = {
-    className: PropTypes.string,
-    defaultInputValue: PropTypes.string,
-    placeholder: PropTypes.string
 }

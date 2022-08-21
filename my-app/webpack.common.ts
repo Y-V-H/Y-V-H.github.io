@@ -1,10 +1,12 @@
-const path = require('path');
+import * as path from 'path';
+import * as webpack from 'webpack';
+import 'webpack-dev-server';
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
-    // target: 'node',
+const config: webpack.Configuration = {
     entry: {
-        app: './src/index.js',
+        app: './src/index.tsx',
     },
     output: {
         filename: 'index.js',
@@ -24,6 +26,11 @@ const config = {
                 }
             },
             {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.s[ac]ss$/i,
                 use: ["style-loader", "css-loader", "sass-loader"],
                 exclude: /(node_modules|bower_components)/,
@@ -35,14 +42,11 @@ const config = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-                // generator: {
-                //     filename: 'img/[hash][ext]'
-                // },
             },
         ]
     },
     resolve: {
-        extensions: ['.jsx', '.ts', '.js'],
+        extensions: ['.jsx', '.ts', '.tsx', '.js'],
     },
     plugins: [
         new HtmlWebpackPlugin({

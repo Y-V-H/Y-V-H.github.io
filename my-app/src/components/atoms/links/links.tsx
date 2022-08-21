@@ -1,5 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
+type LinkProps = {
+    href: string;
+    title: string;
+    children: string;
+    className?: string;
+    target?: string;
+}
 
 export const Link = ({
     href,
@@ -7,7 +14,7 @@ export const Link = ({
     className,
     target,
     children
-}) => {
+}: LinkProps) => {
     return (
         <a
             href={href}
@@ -18,15 +25,4 @@ export const Link = ({
             {children}
         </a>
     )
-}
-
-Link.propTypes = {
-    className: PropTypes.string,
-    href: PropTypes.string,
-    title: PropTypes.string,
-    target: PropTypes.string,
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
 }

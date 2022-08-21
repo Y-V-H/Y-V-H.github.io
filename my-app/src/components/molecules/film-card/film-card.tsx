@@ -2,13 +2,21 @@ import React from 'react';
 import { Header } from '../../atoms/headers/header';
 import { ButtonInfo } from '../../atoms/button-info/button-info';
 
+type FilmCardProps = {
+    title: string;
+    year: string;
+    category: string;
+    image: string;
+    className?: string;
+}
+
 export const FilmCard = ({
     className,
     title,
     year,
     category,
     image
-}) => {
+}: FilmCardProps) => {
     return (
         <figure className={`m-film-card ${className ? className : ''}`}>
             <div className='m-film-card__img-wr'>

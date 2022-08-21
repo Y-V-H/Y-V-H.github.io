@@ -18,6 +18,7 @@ export const Navigation = () => {
                         <Link
                             className={`m-navigation__link ${item.active ? 'm-navigation__link--active' : ''}`}
                             title={item.title}
+                            href='#'
                         >
                             {item.title}
                         </Link>
