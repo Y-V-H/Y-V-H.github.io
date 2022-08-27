@@ -1,8 +1,9 @@
 import React from 'react';
 import { Header } from '../../atoms/headers/header';
 import { ButtonInfo } from '../../atoms/button-info/button-info';
+import { clsx } from 'clsx';
 
-type FilmCardProps = {
+interface FilmCardProps {
     title: string;
     year: string;
     category: string;
@@ -18,7 +19,7 @@ export const FilmCard = ({
     image
 }: FilmCardProps) => {
     return (
-        <figure className={`m-film-card ${className ? className : ''}`}>
+        <figure className={clsx(`m-film-card ${className}`)}>
             <div className='m-film-card__img-wr'>
                 <img className='m-film-card__img' src={require(`/assets/images/cards/${image}`)} />
                 <ButtonInfo className='m-film-card__btn-info' />

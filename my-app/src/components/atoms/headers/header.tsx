@@ -1,6 +1,7 @@
 import React from 'react';
+import { clsx } from 'clsx';
 
-type HeaderProps = {
+interface HeaderProps {
     size: string;
     children: string
     className?: string;
@@ -11,5 +12,5 @@ export const Header = ({
     className,
     children
 }: HeaderProps) => {
-    return React.createElement(size, { className: `a-header a-header--${size} ${className ? className : ''}` }, children)
+    return React.createElement(size, { className: clsx(`a-header a-header--${size} ${className}`) }, children)
 }

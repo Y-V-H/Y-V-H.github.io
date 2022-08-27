@@ -1,6 +1,7 @@
 import React from 'react';
+import { clsx } from 'clsx';
 
-type LinkProps = {
+interface LinkProps {
     href: string;
     title: string;
     children: string;
@@ -18,7 +19,7 @@ export const Link = ({
     return (
         <a
             href={href}
-            className={`a-link ${className ? className : ''}`}
+            className={clsx(`a-link ${className}`)}
             title={title}
             target={target}
         >

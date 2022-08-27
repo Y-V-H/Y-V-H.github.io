@@ -1,6 +1,7 @@
 import React from "react";
+import { clsx } from 'clsx';
 
-type ButtonInfoProps = {
+interface ButtonInfoProps {
     className?: string
 }
 
@@ -8,7 +9,7 @@ export const ButtonInfo = ({
     className
 }: ButtonInfoProps) => {
     return (
-        <button className={`a-button-info ${className ? className : ''}`}>
+        <button className={clsx(`a-button-info ${className}`)}>
             <span>.</span>
             <span>.</span>
             <span>.</span>

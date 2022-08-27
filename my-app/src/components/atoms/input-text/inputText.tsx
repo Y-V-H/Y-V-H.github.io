@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { clsx } from 'clsx';
 
-type InputTextProps = {
+interface InputTextProps {
     className?: string;
     defaultInputValue?: string;
     placeholder?: string;
@@ -17,7 +18,7 @@ export const InputText = ({
     return (
         <input
             type="text"
-            className={`a-input ${className ? className : ''}`}
+            className={clsx(`a-input ${className}`)}
             value={defaultInputValue ? defaultInputValue : inputValue}
             placeholder={placeholder}
             onChange={handlerChange}
