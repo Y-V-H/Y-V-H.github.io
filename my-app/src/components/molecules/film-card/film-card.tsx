@@ -1,6 +1,6 @@
 import React from 'react';
-import { Header } from '../../atoms/headers/header';
-import { ButtonInfo } from '../../atoms/button-info/button-info';
+import { Header } from '../../atoms/header/header';
+import { DeleteMovie } from '../../organisms/delete-movie/DeleteMovie';
 import { clsx } from 'clsx';
 
 interface FilmCardProps {
@@ -22,7 +22,7 @@ export const FilmCard = ({
         <figure className={clsx(`m-film-card ${className}`)}>
             <div className='m-film-card__img-wr'>
                 <img className='m-film-card__img' src={require(`/assets/images/cards/${image}`)} />
-                <ButtonInfo className='m-film-card__btn-info' />
+                <DeleteMovie className='m-film-card__btn-info' />
             </div>
             <figcaption className='m-film-card__caption'>
                 <Header size='h3' className='m-film-card__caption-title'>{title}</Header>

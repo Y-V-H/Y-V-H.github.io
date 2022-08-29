@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '../../atoms/links/links'
+import { Link } from '../../atoms/link/link';
 
 const navItems = [
     { title: 'all', active: false },

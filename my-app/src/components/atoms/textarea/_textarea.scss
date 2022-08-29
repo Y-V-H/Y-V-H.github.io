@@ -1,7 +1,12 @@
-@import './../../_settings/variables';
 @import '../../_settings/mixin';
 
-.a-input {
+.a-textarea-wr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.a-textarea {
     border: none;
     border-radius: 5px;
     padding: 16px 18px;
@@ -10,12 +15,6 @@
     @include input-text-style;
 }
 
-.a-input::placeholder {
-    opacity: 0.3;
-
-    @include input-text-style;
-}
-
-.a-input__label {
+.a-textarea__label {
     @include label-style;
 }

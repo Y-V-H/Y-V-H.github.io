@@ -28,7 +28,8 @@
     width: 100%;
 }
 
-.m-film-card__img:hover+.m-film-card__btn-info {
+.m-film-card__img:hover+.m-film-card__btn-info,
+.m-film-card__btn-info:hover {
     display: flex;
 }
 
