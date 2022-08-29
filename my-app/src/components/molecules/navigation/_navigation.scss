@@ -1,0 +1,30 @@
+@import '../../_settings/variables';
+
+.m-navigation__block {
+    display: flex;
+    padding-left: 0;
+}
+
+.m-navigation__item {
+    list-style: none;
+}
+
+.m-navigation__link {
+    padding: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+}
+
+.m-navigation__link--active::after,
+.m-navigation__link:hover:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: $infra-red;
+    width: calc(100% - 32px);
+    left: 50%;
+    transform: translate(-50%);
+}
