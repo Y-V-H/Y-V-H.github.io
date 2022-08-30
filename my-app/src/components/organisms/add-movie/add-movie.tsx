@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "../modal/modal";
 import { Button } from "../../atoms/button/button";
-import { InputText } from "../../atoms/input-text/inputText";
+import { InputText } from "../../atoms/input-text/input-text";
 import { Textarea } from '../../atoms/textarea/textarea';
 
 export const AddMovie = () => {
@@ -17,7 +17,8 @@ export const AddMovie = () => {
                 <Button className='a-btn__primary' onClick={handlerClick}>+ add movie</Button>
             </div>
 
-            {isOpen && <Modal
+            <Modal
+                isOpen={isOpen}
                 titleType="h1"
                 title="EDIT MOVIE"
                 isModalOpen={setIsOpen}
@@ -47,7 +48,6 @@ export const AddMovie = () => {
                     </div>
                 </form>
             </Modal>
-            }
         </>
     )
 }

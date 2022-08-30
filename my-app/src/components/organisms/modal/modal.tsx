@@ -1,17 +1,22 @@
 import React from 'react';
-import { ReactPortal } from '../../../utils/reactPortal'
+import { ReactPortal } from '../../../utils/react-portal'
 import { Button } from '../../atoms/button/button';
 import { Header } from '../../atoms/header/header';
 
 interface ModalProps {
+    isOpen: boolean;
     children: React.ReactNode;
     title: string;
     titleType: string;
     isModalOpen: (t: boolean) => void;
 }
 
-export const Modal = ({ children, title, titleType, isModalOpen, }: ModalProps) => {
+export const Modal = ({ isOpen, children, title, titleType, isModalOpen, }: ModalProps) => {
     const handlerClick = () => isModalOpen(false);
+
+    if (!isOpen) {
+        return null;
+    }
 
     return (
         <ReactPortal>

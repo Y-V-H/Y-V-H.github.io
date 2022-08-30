@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../../atoms/button/button';
-import { InputText } from '../../atoms/input-text/inputText';
+import { InputText } from '../../atoms/input-text/input-text';
 
 export const Search = () => {
     return (

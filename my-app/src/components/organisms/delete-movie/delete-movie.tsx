@@ -19,7 +19,8 @@ export const DeleteMovie = ({ className }: DeleteMovieProps) => {
                 onClick={handleClick}
             />
 
-            {isOpen && <Modal
+            <Modal
+                isOpen={isOpen}
                 titleType='h1'
                 title='Delete MOVIE'
                 isModalOpen={setIsOpen}
@@ -28,7 +29,7 @@ export const DeleteMovie = ({ className }: DeleteMovieProps) => {
                     <p>Are you sure you want to delete this movie?</p>
                     <Button className='a-btn__secondary o-delete-movie__btn '>confirm</Button>
                 </div>
-            </Modal>}
+            </Modal>
         </>
     )
 }

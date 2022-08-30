@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../../atoms/header/header';
-import { DeleteMovie } from '../../organisms/delete-movie/DeleteMovie';
+import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
 import { clsx } from 'clsx';
 
 interface FilmCardProps {
