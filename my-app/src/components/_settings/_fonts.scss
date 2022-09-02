@@ -18,3 +18,10 @@
         url('/assets/fonts/MontserratAlternates-Light.woff') format('woff');
     font-weight: 100;
 }
+
+@font-face {
+    font-family: 'fontello';
+    src: url('/assets/fonts/fontello.woff') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,21 @@
+@import './../../_settings/variables';
+@import '../../_settings/mixin';
+
+.a-input {
+    border: none;
+    border-radius: 5px;
+    padding: 16px 18px;
+    background: rgba($dark-liver, .8);
+
+    @include input-text-style;
+}
+
+.a-input::placeholder {
+    opacity: 0.3;
+
+    @include input-text-style;
+}
+
+.a-input__label {
+    @include label-style;
+}
