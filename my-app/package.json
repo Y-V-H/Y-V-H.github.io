@@ -1,12 +1,15 @@
 {
   "name": "my-app",
+  "homepage": "https://y-v-h.github.io/",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot --config webpack.dev.ts",
-    "build": "webpack build --config webpack.prod.js",
-    "clean:all": "git clean -fXd -e \\!.env.local"
+    "build": "webpack build --config webpack.prod.ts",
+    "clean:all": "git clean -fXd -e \\!.env.local",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "y.hurynovich",
   "license": "MIT",
@@ -30,6 +33,7 @@
     "babel-preset-react": "^6.24.1",
     "clsx": "^1.2.1",
     "css-loader": "^6.7.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "prop-types": "^15.8.1",
     "react-select": "^5.4.0",
