@@ -18,13 +18,14 @@ export const FilmsBlock = () => {
             </div>
             <div className='o-films-block__list'>
                 {
-                    filmCards.map(item => <FilmCard
+                    filmCards.map((item,id) => <FilmCard
                         key={item.title}
                         className='o-films-block__list-item'
                         title={item.title}
                         year={item.date}
                         category={item.category}
                         image={item.image}
+                        id={id}
                     />
                     )
                 }

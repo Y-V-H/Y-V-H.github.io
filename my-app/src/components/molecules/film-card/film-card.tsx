@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Header } from '../../atoms/header/header';
 import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
 import { clsx } from 'clsx';
+
+import { FilmInfoContext } from '../../../filmInfoContext';
+import { filmCards } from '../../../../assets/mock-data/film-cards.js';
 
 interface FilmCardProps {
     title: string;
     year: string;
     category: string;
     image: string;
+    id: number;
     className?: string;
 }
 
 export const FilmCard = ({
-    className,
     title,
     year,
     category,
-    image
+    image,
+    id,
+    className,
 }: FilmCardProps) => {
+    const { setIsShowFilmInfo, setFilmFullInfo } = useContext(FilmInfoContext);
+    const handlerClick = () => {
+        setFilmFullInfo(filmCards[id]);
+        setIsShowFilmInfo(true);
+    };
+
     return (
-        <figure className={clsx(`m-film-card ${className}`)}>
+        <figure className={clsx(`m-film-card ${className}`)} onClick={handlerClick}>
             <div className='m-film-card__img-wr'>
                 <img className='m-film-card__img' src={require(`/assets/images/cards/${image}`)} />
                 <DeleteMovie className='m-film-card__btn-info' />
