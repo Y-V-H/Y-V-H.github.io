@@ -13,8 +13,7 @@ function App() {
 
     return (
             <FilmInfoContext.Provider value={{isShowFilmInfo, setIsShowFilmInfo, filmFullInfo, setFilmFullInfo}}>
-                {!isShowFilmInfo && <SearchBlock />}
-                {isShowFilmInfo && <FilmFullInfo />}
+                {isShowFilmInfo ? <FilmFullInfo /> : <SearchBlock />}
                 <FilmsBlock />
             </FilmInfoContext.Provider>
     )

@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 
 interface LogoProps {
     className?: string;
-    onClick: React.MouseEventHandler<HTMLAnchorElement>;
+    onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export const Logo = ({className, onClick}: LogoProps) => {

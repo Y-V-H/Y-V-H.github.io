@@ -1,7 +1,7 @@
 @import '../../_settings/variables';
 
 @mixin caption-text {
-    font-family: 'montserrat-regular';
+    font-family: $montserrat-font;
     color: $white;
     opacity: .5;
     font-size: 14px;
@@ -18,10 +18,12 @@
 }
 
 .m-film-card__btn-info {
+    display: none;
     position: absolute;
+    justify-content: center;
+    align-items: center;
     top: 16px;
     right: 16px;
-    display: none;
 }
 
 .m-film-card__img {

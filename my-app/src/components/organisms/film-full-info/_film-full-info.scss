@@ -44,12 +44,12 @@
     border: 1px solid $white;
     padding: 18px 16px;
     border-radius: 50px;
-    font-family: "montserrat-regular", sans-serif;
+    font-family: $montserrat-font;
  }
 
  .o-film-info__details-award {
     width: 100%;
-    font-family: "montserrat-regular", sans-serif;
+    font-family: $montserrat-font;
     color: $white;
     opacity: 0.7;
  }
@@ -59,7 +59,7 @@
  }
 
  .o-film-info__details-date span {
-    font-family: "montserrat-regular", sans-serif;
+    font-family: $montserrat-font;
     color: $infra-red;
     font-size: 24px;
     margin-right: 32px;
