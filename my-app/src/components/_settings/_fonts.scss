@@ -20,6 +20,14 @@
 }
 
 @font-face {
+    font-family: 'montserrat-bold';
+    src: local('Montserrat-Bold'),
+        local('Montserrat Bold'),
+        url('/assets/fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: 900;
+}
+
+@font-face {
     font-family: 'fontello';
     src: url('/assets/fonts/fontello.woff') format('woff2');
     font-weight: normal;

@@ -1,0 +1,14 @@
+@import '../../_settings/variables';
+
+
+.a-logo {
+    font-size: 22px;
+    color: $infra-red;
+    text-decoration: none;
+    font-family: $montserrat-font;
+}
+
+.a-logo b {
+    font-family: $montserrat-font-bold;
+    font-size: 28px;
+}

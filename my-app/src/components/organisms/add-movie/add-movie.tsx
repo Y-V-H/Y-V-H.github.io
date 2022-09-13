@@ -3,6 +3,7 @@ import { Modal } from "../modal/modal";
 import { Button } from "../../atoms/button/button";
 import { InputText } from "../../atoms/input-text/input-text";
 import { Textarea } from '../../atoms/textarea/textarea';
+import { Logo } from '../../atoms/logo/logo';
 
 export const AddMovie = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,8 @@ export const AddMovie = () => {
     return (
         <>
             <div className='o-search-block__add'>
-                <div className='o-search-block__logo'><b>netflix</b>roulette</div>
+                {/* <div className='o-search-block__logo'><b>netflix</b>roulette</div> */}
+                <Logo />
                 <Button className='a-btn__primary' onClick={handlerClick}>+ add movie</Button>
             </div>
 

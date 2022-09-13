@@ -14,16 +14,14 @@
 
 .o-modal {
     width: 976px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     height: auto;
     position: relative;
     padding: 60px;
     background: $raisin-black;
     color: white;
     z-index: 10;
-}
-
-.o-modal__header {
-    // position: relative;
 }
 
 .o-modal__title {

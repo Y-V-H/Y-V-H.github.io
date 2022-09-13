@@ -3,7 +3,7 @@
     font-family: "fontello";
     font-style: normal;
     font-weight: normal;
-    speak: never;
+    // speak: never;
 
     display: inline-block;
     text-decoration: inherit;
@@ -52,4 +52,8 @@
 
 .icon-up-dir:before {
     content: '\e804';
+}
+
+.icon-search:before {
+    content: '\e805'; 
 }
