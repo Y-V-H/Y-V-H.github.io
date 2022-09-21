@@ -9,7 +9,7 @@ import { filmCards } from '../../../../assets/mock-data/film-cards.js';
 interface FilmCardProps {
     title: string;
     year: string;
-    category: string;
+    category: string[];
     image: string;
     id: number;
     className?: string;
@@ -32,13 +32,13 @@ export const FilmCard = ({
     return (
         <figure className={clsx(`m-film-card ${className}`)} onClick={handlerClick}>
             <div className='m-film-card__img-wr'>
-                <img className='m-film-card__img' src={require(`/assets/images/cards/${image}`)} />
+                <img className='m-film-card__img' src={require(`${image}`)} />
                 <DeleteMovie className='m-film-card__btn-info' />
             </div>
             <figcaption className='m-film-card__caption'>
                 <Header size='h3' className='m-film-card__caption-title'>{title}</Header>
                 <span className='m-film-card__caption-year'>{year}</span>
-                <span className='m-film-card__caption-category'>{category}</span>
+                <span className='m-film-card__caption-category'>{...category}</span>
             </figcaption>
         </figure>
     )
