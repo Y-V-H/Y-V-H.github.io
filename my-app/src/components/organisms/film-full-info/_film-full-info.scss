@@ -42,9 +42,13 @@
     color: $bud-green;
     font-size: 24px;
     border: 1px solid $white;
-    padding: 18px 16px;
     border-radius: 50px;
     font-family: $montserrat-font;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
  }
 
  .o-film-info__details-award {

@@ -35,7 +35,13 @@ const option = [
     {value: 'release date', label: 'Release date'}
 ]
 
-export const FilmSelect = ( handleChange: any) => {
+interface FilmSelectProps {
+    handleChange: any
+}
+
+export const FilmSelect = ({
+    handleChange
+}: FilmSelectProps) => {
 
     return (
         <Select 

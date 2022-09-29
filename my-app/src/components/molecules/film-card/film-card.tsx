@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Header } from '../../atoms/header/header';
 import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
 import { clsx } from 'clsx';
+import { useDispatch, useSelector  } from 'react-redux';
 
-import { FilmInfoContext } from '../../../filmInfoContext';
-import { filmCards } from '../../../../assets/mock-data/film-cards.js';
+import { updateCurrentFilmData } from '../../../toolkit-store/slicer-reducer';
+import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer';
 
 interface FilmCardProps {
     title: string;
@@ -15,6 +16,8 @@ interface FilmCardProps {
     className?: string;
 }
 
+const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
+
 export const FilmCard = ({
     title,
     year,
@@ -23,12 +26,14 @@ export const FilmCard = ({
     id,
     className,
 }: FilmCardProps) => {
-    const { setIsShowFilmInfo, setFilmFullInfo } = useContext(FilmInfoContext);
-    const handlerClick = () => {
-        setFilmFullInfo(filmCards[id]);
-        setIsShowFilmInfo(true);
-    };
+    const dispatch = useDispatch();
+    const getFilmsData = useSelector(selectFilmsData);
     const categoryFullName = category.toString().replace(/,/g, ' ');
+
+    const handlerClick = () => {
+        dispatch(updateCurrentFilmData(getFilmsData[id]));
+    };
+
     return (
         <figure className={clsx(`m-film-card ${className}`)} onClick={handlerClick}>
             <div className='m-film-card__img-wr'>

@@ -6,7 +6,7 @@ import { SortBy } from '../../molecules/sort-by/sort-by';
 
 import { useDispatch, useSelector  } from 'react-redux';
 import { updateFilmsData } from '../../../toolkit-store/slicer-reducer';
-import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer'
+import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer';
 
 const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
 
@@ -30,7 +30,7 @@ export const FilmsBlock = () => {
             </div>
             <Divider className='o-films-block__divider' />
             <div className='o-films-block__search-result'>
-                <span><b>39</b> movies found</span>
+                <span><b>{dataFilms.length}</b> movies found</span>
             </div>
             <div className='o-films-block__list'>
                 {

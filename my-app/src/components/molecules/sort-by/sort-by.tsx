@@ -21,6 +21,7 @@ export const SortBy = () => {
     }
 
     const handleChange = async (selectOption: {value: string, label: string}) => {
+        console.log(1)
         await sortFilmsByFilter(selectOption.value);
     }
 
