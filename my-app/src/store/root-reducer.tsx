@@ -1,9 +1,9 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-// import getFilmsDataReducer from './feature/getFilmsDataSlice';
+import getFilmsDataReducer from './feature/getFilmsDataSlice';
 
-// const rootReducer = combineReducers({
-//     filmsData: getFilmsDataReducer
-// });
+const rootReducer = combineReducers({
+    getFilmsDataReducer
+});
 
-// export default rootReducer;
+export default rootReducer;

@@ -28,17 +28,18 @@ export const FilmCard = ({
         setFilmFullInfo(filmCards[id]);
         setIsShowFilmInfo(true);
     };
-
+    const categoryFullName = category.toString().replace(/,/g, ' ');
     return (
         <figure className={clsx(`m-film-card ${className}`)} onClick={handlerClick}>
             <div className='m-film-card__img-wr'>
-                <img className='m-film-card__img' src={require(`${image}`)} />
+                {/* <img className='m-film-card__img' src={require(`${image}`)} /> */}
+                <img className='m-film-card__img' src={`${image}`} />
                 <DeleteMovie className='m-film-card__btn-info' />
             </div>
             <figcaption className='m-film-card__caption'>
                 <Header size='h3' className='m-film-card__caption-title'>{title}</Header>
                 <span className='m-film-card__caption-year'>{year}</span>
-                <span className='m-film-card__caption-category'>{...category}</span>
+                <span className='m-film-card__caption-category'>{categoryFullName}</span>
             </figcaption>
         </figure>
     )

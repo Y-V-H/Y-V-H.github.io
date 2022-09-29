@@ -8,6 +8,7 @@ export const filmCards = [
         award: 'Festival international du film de Cannes winning Movie',
         release_date: '1991',
         duration: '1h 33min',
+        genres: ['Fire'],
         description: 'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra'
     },
     {
@@ -19,6 +20,7 @@ export const filmCards = [
         award: 'Oscar winning Movie',
         release_date: '1999',
         duration: '0h 59min',
+        genres: ['Fire'],
         description: 'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra'
     },
     {
@@ -30,6 +32,7 @@ export const filmCards = [
         award: 'Festival international du film de Cannes winning Movie',
         release_date: '2001',
         duration: '3h 00min',
+        genres: ['Fire'],
         description: 'Jules Winnfield (Samuel L. Jackson) and'
     
     },
@@ -42,6 +45,7 @@ export const filmCards = [
         award: 'Oscar winning Movie',
         release_date: '1988',
         duration: '1h 59min',
+        genres: ['Fire'],
         description: 'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to  take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra'
     
     },
@@ -54,6 +58,7 @@ export const filmCards = [
         award: 'Festival international du film de Cannes winning Movie',
         release_date: '1976',
         duration: '2h 54min',
+        genres: ['Fire'],
         description: 'who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra'
     
     },
@@ -66,6 +71,7 @@ export const filmCards = [
         award: 'Oscar winning Movie',
         release_date: '1994',
         duration: '1h 23min',
+        genres: ['Fire'],
         description: 'Jules Winnfield (Samuel L. Jackson) ieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra'
     
     }

@@ -3,17 +3,16 @@ import { Navigation } from '../../molecules/navigation/navigation';
 import { Divider } from '../../atoms/divider/divider';
 import { FilmCard } from '../../molecules/film-card/film-card';
 import { SortBy } from '../../molecules/sort-by/sort-by';
-// import { filmCards } from '../../../../assets/mock-data/film-cards.js';
 
 import { useDispatch, useSelector  } from 'react-redux';
-import { updateFilmsData } from '../../../store/action-creators';
-import { filmsDataProps } from '../../../store/feature/getFilmsDataSlice';
+import { updateFilmsData } from '../../../toolkit-store/slicer-reducer';
+import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer'
 
-const selectFilmsData = ( state: filmsDataProps ) => state.filmsData;
+const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
 
 export const FilmsBlock = () => {
     const dispatch = useDispatch();
-    const data = useSelector(selectFilmsData)
+    const dataFilms = useSelector(selectFilmsData)
 
     useEffect(() => {
         fetch('http://localhost:4000/movies')
@@ -21,7 +20,7 @@ export const FilmsBlock = () => {
         .then( res => {
             dispatch(updateFilmsData(res.data))
         })
-    });
+    },[]);
 
     return (
         <main className="container o-films-block">
@@ -35,7 +34,7 @@ export const FilmsBlock = () => {
             </div>
             <div className='o-films-block__list'>
                 {
-                    data.map((item,id) => <FilmCard
+                    dataFilms.map((item,id) => <FilmCard
                         key={item.title}
                         className='o-films-block__list-item'
                         title={item.title}

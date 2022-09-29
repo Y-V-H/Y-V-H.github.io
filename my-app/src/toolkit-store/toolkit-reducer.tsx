@@ -1,5 +1,5 @@
-import { UPDATE_FILMS_DATA } from '../name-actions';
-import { filmCards } from '../../../assets/mock-data/film-cards'
+import { createReducer, createAction } from "@reduxjs/toolkit";
+import { filmCards } from '../../assets/mock-data/film-cards'
 
 export interface filmsDataProps {
     toolkit: {
@@ -20,20 +20,17 @@ export interface filmsDataProps {
     }
 }
 
+const UPDATE_FILMS_DATA = 'todos/updatefilms';
+
 const initialState = {
     filmsData: filmCards
-} ;
+};
 
-export default function getFilmsDataReducer (state = initialState, action: {type: string, payload?: filmsDataProps}){
-    switch(action.type){
-        case UPDATE_FILMS_DATA: {
-            return {
-                ...state,
-                filmsData: action.payload
-            }
-        }
+export const updateFilmsData = createAction(UPDATE_FILMS_DATA)
 
-        default:
-            return state;
-    }
-}
+export const toolkitReducer = createReducer(initialState, builder => {
+    builder
+        .addCase(updateFilmsData, (state, action) => {
+            state.filmsData = action.payload
+        })
+})

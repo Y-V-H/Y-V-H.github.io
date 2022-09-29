@@ -1,16 +1,6 @@
-// import Redux, { createStore  } from 'redux';
-import { configureStore } from '@reduxjs/toolkit'
-// import { configureStore } from '@reduxjs/toolkit'
-// import rootReducer from './root-reducer';
-import getFilmsDataReducer from './feature/getFilmsDataSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './root-reducer';
 
-// debugger
-
-// const store = Redux.createStore(getFilmsDataReducer);
-const store = configureStore({
-    reducer: {
-      filmsData: getFilmsDataReducer
-    }
-  })
+const store = configureStore({reducer: rootReducer})
 
 export default store;
