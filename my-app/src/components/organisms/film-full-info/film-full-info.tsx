@@ -3,7 +3,7 @@ import { Header } from '../../atoms/header/header';
 import { ButtonIcon } from '../../atoms/button-icon/button-icon';
 import { ButtonIconColor, ButtonIconSize } from '../../atoms/button-icon/button-icon';
 import { Logo } from '../../atoms/logo/logo';
-import { filmsDataProps, updateCurrentFilmData} from '../../../toolkit-store/slicer-reducer';
+import { filmsDataProps, updateCurrentFilmData} from '../../../toolkit-store/slice-reducer';
 import { useDispatch, useSelector  } from 'react-redux';
 
 interface oneFilmData {

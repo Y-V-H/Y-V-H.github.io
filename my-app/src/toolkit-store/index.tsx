@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import toolkitReducer from './slicer-reducer'
+import toolkitSlice from './slice-reducer';
+import sortBySlice from './sort-by-slice-reducer'
 
 
 const rootReducer = combineReducers({
-    toolkit: toolkitReducer
+    toolkit: toolkitSlice,
+    sortBy: sortBySlice
 })
 
 export const store = configureStore({

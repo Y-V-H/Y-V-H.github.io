@@ -4,8 +4,7 @@ import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
 import { clsx } from 'clsx';
 import { useDispatch, useSelector  } from 'react-redux';
 
-import { updateCurrentFilmData } from '../../../toolkit-store/slicer-reducer';
-import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer';
+import { updateCurrentFilmData, filmsDataProps } from '../../../toolkit-store/slice-reducer';
 
 interface FilmCardProps {
     title: string;

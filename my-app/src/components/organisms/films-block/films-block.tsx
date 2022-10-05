@@ -5,8 +5,7 @@ import { FilmCard } from '../../molecules/film-card/film-card';
 import { SortBy } from '../../molecules/sort-by/sort-by';
 
 import { useDispatch, useSelector  } from 'react-redux';
-import { updateFilmsData } from '../../../toolkit-store/slicer-reducer';
-import { filmsDataProps } from '../../../toolkit-store/toolkit-reducer';
+import { updateFilmsData, filmsDataProps } from '../../../toolkit-store/slice-reducer';
 
 const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
 
