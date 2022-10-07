@@ -4,7 +4,7 @@
     font-family: $montserrat-font;
     color: $white;
     opacity: .5;
-    font-size: 14px;
+    
 }
 
 .m-film-card {
@@ -47,7 +47,7 @@
 }
 
 .m-film-card__caption-year {
-    width: 62px;
+    width: 76px;
     height: 24px;
     border: 1px solid $granite-gray;
     margin-left: 24px;
@@ -55,12 +55,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    font-size: 12px;
 
     @include caption-text;
 }
 
 .m-film-card__caption-category {
     width: 100%;
+    font-size: 14px;
 
     @include caption-text;
 }
