@@ -4,21 +4,18 @@ import { Divider } from '../../atoms/divider/divider';
 import { FilmCard } from '../../molecules/film-card/film-card';
 import { SortBy } from '../../molecules/sort-by/sort-by';
 
-import { useDispatch, useSelector  } from 'react-redux';
-import { updateFilmsData, filmsDataProps } from '../../../toolkit-store/slice-reducer';
+import { useSelector, useDispatch  } from 'react-redux';
+import { getMoviesFetch } from '../../../toolkit-store/sort-by-slice-reducer';
+import { filmsDataProps } from '../../../toolkit-store/index';
 
-const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
+const selectFilmsData = ( state: filmsDataProps ) => state.sortBySlice.filmsData;
 
 export const FilmsBlock = () => {
-    const dispatch = useDispatch();
     const dataFilms = useSelector(selectFilmsData)
+    const dispatch = useDispatch<any>();
 
     useEffect(() => {
-        fetch('http://localhost:4000/movies')
-        .then(( response ) => response.json())
-        .then( res => {
-            dispatch(updateFilmsData(res.data))
-        })
+        dispatch( getMoviesFetch() )
     },[]);
 
     return (

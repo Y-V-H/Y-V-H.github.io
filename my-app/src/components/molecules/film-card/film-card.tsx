@@ -4,7 +4,8 @@ import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
 import { clsx } from 'clsx';
 import { useDispatch, useSelector  } from 'react-redux';
 
-import { updateCurrentFilmData, filmsDataProps } from '../../../toolkit-store/slice-reducer';
+import { updateCurrentFilmData } from '../../../toolkit-store/sort-by-slice-reducer';
+import { filmsDataProps } from '../../../toolkit-store/index';
 
 interface FilmCardProps {
     title: string;
@@ -15,7 +16,7 @@ interface FilmCardProps {
     className?: string;
 }
 
-const selectFilmsData = ( state: filmsDataProps ) => state.toolkit.filmsData;
+const selectFilmsData = ( state: filmsDataProps ) => state.sortBySlice.filmsData;
 
 export const FilmCard = ({
     title,

@@ -1,27 +1,28 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Header } from '../../atoms/header/header';
 import { ButtonIcon } from '../../atoms/button-icon/button-icon';
 import { ButtonIconColor, ButtonIconSize } from '../../atoms/button-icon/button-icon';
 import { Logo } from '../../atoms/logo/logo';
-import { filmsDataProps, updateCurrentFilmData} from '../../../toolkit-store/slice-reducer';
+import { filmsDataProps } from '../../../toolkit-store/index';
+import { updateCurrentFilmData } from '../../../toolkit-store/sort-by-slice-reducer'; 
 import { useDispatch, useSelector  } from 'react-redux';
 
-interface oneFilmData {
-    'id': number;
-    'title': string;
-    'tagline': string;
-    'vote_average': number;
-    'vote_count': number;
-    'release_date': string;
-    'poster_path': string;
-    'overview': string;
-    'budget': number;
-    'revenue': number;
-    'genres': string[];
-    'runtime': number;
-}
+// interface oneFilmData {
+//     'id': number;
+//     'title': string;
+//     'tagline': string;
+//     'vote_average': number;
+//     'vote_count': number;
+//     'release_date': string;
+//     'poster_path': string;
+//     'overview': string;
+//     'budget': number;
+//     'revenue': number;
+//     'genres': string[];
+//     'runtime': number;
+// }
 
-const selectCurrentFilmData = (state: filmsDataProps) => state.toolkit.currentFilm;
+const selectCurrentFilmData = (state: filmsDataProps) => state.sortBySlice.currentFilm;
 
 export const FilmFullInfo = () => {
     const currentFilmData = useSelector(selectCurrentFilmData);

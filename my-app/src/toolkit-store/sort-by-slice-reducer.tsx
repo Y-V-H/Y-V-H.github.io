@@ -6,25 +6,49 @@ const initialState = {
     currentFilm: ''
 };
 
-export const getMovies = createAsyncThunk(
-    "todos/fetch", 
-    async (sortByValue?:string) => {
-        const url = `http://localhost:4000/movies?sortOrder=asc${sortByValue ? `&sortBy=${sortByValue}` : ''}`;
-        const response = await (await fetch(url)).json();
+const fetchDataFromMovieAPI = async (sortByValue?:string) => {
+    const url = `http://localhost:4000/movies?sortOrder=asc${sortByValue ? `&sortBy=${sortByValue}` : ''}`;
+    const response = await (await fetch(url)).json();
 
-        return response.data;
+    return response.data;
+}
+
+export const sortByMoviesFetch = createAsyncThunk(
+    "todos/sortByMoviesFetch", 
+    async (sortByValue?:string) => {
+        const response = await fetchDataFromMovieAPI(sortByValue);
+
+        return response;
+    }
+)
+
+export const getMoviesFetch = createAsyncThunk(
+    "todos/getMoviesFetch", 
+    async () => {
+        const response = await fetchDataFromMovieAPI();
+
+        return response;
     }
 )
 
 const sortBySlice = createSlice({
-    name: 'sortBy',
-    initialState: initialState,
-    reducers: {},
+    name: 'todos/sortBy',
+    initialState,
+    reducers: {
+        updateCurrentFilmData(state, action){
+            state.currentFilm = action.payload
+        }
+    },
     extraReducers: builder => {
-        builder.addCase(getMovies.fulfilled, (state, action) => {
-            state.filmsData = action.payload
-        });
+        builder
+            .addCase(sortByMoviesFetch.fulfilled, (state, action) => {
+                state.filmsData = action.payload
+            })
+            .addCase(getMoviesFetch.fulfilled, (state, action) => {
+                state.filmsData = action.payload
+            });
     }
 })
 
 export default sortBySlice.reducer;
+export const { updateCurrentFilmData } = sortBySlice.actions;
