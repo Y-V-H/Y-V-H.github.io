@@ -1,6 +1,17 @@
 @import './../../_settings/variables';
 @import '../../_settings/mixin';
 
+.a-input-wr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 16px;
+}
+
+.a-input-wr__with-error {
+    position: relative;
+}
+
 .a-input {
     border: none;
     border-radius: 5px;
@@ -8,6 +19,19 @@
     background: rgba($dark-liver, .8);
 
     @include input-text-style;
+}
+
+.a-input__error {
+    box-shadow:inset 0 0 10px $red;
+}
+
+.a-input_error-message {
+    color: $red;
+    font-family: $montserrat-font;
+    font-size: 14px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
 }
 
 .a-input::placeholder {

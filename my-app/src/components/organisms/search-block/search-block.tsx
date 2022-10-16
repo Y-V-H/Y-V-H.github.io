@@ -1,8 +1,7 @@
 import React from 'react';
 import { Header } from '../../atoms/header/header';
 import { Search } from '../../molecules/search/search';
-
-import { AddMovie } from '../add-movie/add-movie';
+import { AddMovie } from '../add-movie-header/add-movie-header';
 
 export const SearchBlock = () => {
     return (

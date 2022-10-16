@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../../atoms/header/header';
-import { DeleteMovie } from '../../organisms/delete-movie/delete-movie';
+import { MovieManipulation } from '../../organisms/movie-manipulation/movie_manipulation';
 import { clsx } from 'clsx';
 import { useDispatch, useSelector  } from 'react-redux';
 
@@ -13,6 +13,7 @@ interface FilmCardProps {
     category: string[];
     image: string;
     id: number;
+    filmId: number;
     className?: string;
 }
 
@@ -25,6 +26,7 @@ export const FilmCard = ({
     image,
     id,
     className,
+    filmId
 }: FilmCardProps) => {
     const dispatch = useDispatch();
     const getFilmsData = useSelector(selectFilmsData);
@@ -39,7 +41,7 @@ export const FilmCard = ({
             <div className='m-film-card__img-wr'>
                 {/* <img className='m-film-card__img' src={require(`${image}`)} /> */}
                 <img className='m-film-card__img' src={`${image}`} />
-                <DeleteMovie className='m-film-card__btn-info' />
+                <MovieManipulation className='m-film-card__btn-info' filmId={filmId} filmsArray={getFilmsData}/>
             </div>
             <figcaption className='m-film-card__caption'>
                 <Header size='h3' className='m-film-card__caption-title'>{title}</Header>

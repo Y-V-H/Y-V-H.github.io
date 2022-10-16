@@ -1,0 +1,26 @@
+.m-serm {
+    padding: 12px 28px;
+    background: rgb(224, 28, 28, 0.2);
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.m-serm__list {
+    font-family: $montserrat-font;
+    font-size: 12px;
+}
+
+.m-serm__list li {
+    line-height: 18px;
+}
+
+.m-serm__btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 12px;
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+}

@@ -38,6 +38,7 @@ export const FilmsBlock = () => {
                         category={item.genres}
                         image={item.poster_path}
                         id={id}
+                        filmId={item.id}
                     />
                     )
                 }
