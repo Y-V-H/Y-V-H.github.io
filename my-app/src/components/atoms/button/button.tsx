@@ -18,7 +18,7 @@ export const Button = ({
         <button
             className={clsx(`a-btn ${className}`)}
             onClick={onClick}
-            type={type ? type : 'button'}
+            type={type || 'button'}
         >
             {children}
         </button>

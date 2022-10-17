@@ -3,7 +3,6 @@ import { Header } from '../../atoms/header/header';
 import { MovieManipulation } from '../../organisms/movie-manipulation/movie_manipulation';
 import { clsx } from 'clsx';
 import { useDispatch, useSelector  } from 'react-redux';
-
 import { updateCurrentFilmData } from '../../../toolkit-store/sort-by-slice-reducer';
 import { filmsDataProps } from '../../../toolkit-store/index';
 

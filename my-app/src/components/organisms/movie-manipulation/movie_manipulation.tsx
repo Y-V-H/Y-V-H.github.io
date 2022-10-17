@@ -3,7 +3,9 @@ import { ButtonInfo } from '../../atoms/button-info/button-info';
 import { Button } from '../../atoms/button/button';
 import { Modal } from '../modal/modal';
 import { AddMovieModal } from '../add-movie-modal/add-movie-modal';
-import { oneFilmData } from '../../../toolkit-store/index'
+import { oneFilmData } from '../../../toolkit-store/index';
+import { deleteFilmFromState } from '../../../toolkit-store/sort-by-slice-reducer';
+import { useDispatch } from 'react-redux';
 
 interface DeleteMovieProps {
     filmId: number;
@@ -18,13 +20,16 @@ export const MovieManipulation = ({ className, filmId, filmsArray }: DeleteMovie
     const [isUpdateMovieModalOpen, setIsUpdateMovieModalOpen] = useState(false);
     const [dataForUpdate, setDataForUpdate] = useState(null)
 
-
+    const dispatch = useDispatch();
     const handlerShowDeleteModal = () => {
         setIsOpen(true);
         handlerShowUpdateButtons();
     }
     const handlerDelete = async () => {
+        const stateObjAfterDeleteFilm = filmsArray.filter( obj => obj.id !== filmId);
+
         await fetch(`http://localhost:4000/movies/${filmId}`, { method: 'DELETE' });
+        dispatch(deleteFilmFromState(stateObjAfterDeleteFilm))
         setDeleted(true);
     }
     const handlerShowUpdateButtons = () => setIsUpdateButtonsShow(!isUpdateButtonsShow);
@@ -37,8 +42,6 @@ export const MovieManipulation = ({ className, filmId, filmsArray }: DeleteMovie
         const defaultMovieDataForUpdate = filmsArray.filter( object => object.id === filmId);
         setDataForUpdate(defaultMovieDataForUpdate[0])
     },[filmId])
-
-    
 
     return (
         <>
@@ -59,7 +62,7 @@ export const MovieManipulation = ({ className, filmId, filmsArray }: DeleteMovie
                 isOpen={isOpen}
                 titleType='h1'
                 title='Delete MOVIE'
-                isModalOpen={setIsOpen}
+                toggleModalOpen={setIsOpen}
             >
                 <div className='o-delete-movie'>
                     {isDeleted ?

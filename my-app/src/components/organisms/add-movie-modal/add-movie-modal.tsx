@@ -15,7 +15,7 @@ export const AddMovieModal = ({isOpen, toggleModalState, updateObject}: AddMovie
                 isOpen={isOpen}
                 titleType="h1"
                 title="EDIT MOVIE"
-                isModalOpen={toggleModalState}
+                toggleModalOpen={toggleModalState}
             >
                 <AddMovieForm updateObject={updateObject} toggleModalState={toggleModalState}/>
         </Modal>

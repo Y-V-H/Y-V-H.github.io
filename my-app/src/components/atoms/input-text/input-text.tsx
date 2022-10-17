@@ -24,15 +24,7 @@ export const InputText = ({
 }: InputTextProps) => {
     const [inputValue, setInputValue] = useState('');
     const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (onlyNumber) {
-            const re = new RegExp('^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$');    
-
-            if (e.target.value === '' || re.test(e.target.value)) {
-                setInputValue(e.target.value)
-            }
-        } else {
-            setInputValue(e.target.value)
-        }
+        setInputValue(e.target.value)
     };
     const firminkHuermik = (e: React.ChangeEvent<HTMLInputElement>) => {
         formikHandlerChange(e,onlyNumber)

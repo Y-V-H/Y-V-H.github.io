@@ -5,6 +5,9 @@ import { Textarea } from '../../atoms/textarea/textarea';
 import { Button } from '../../atoms/button/button';
 import { CustomSelect } from '../../molecules/custom-select/custom-select';
 import { ServerErrorMessage } from '../../molecules/server-error-message/server-error-message';
+import { useDispatch, useSelector } from 'react-redux';
+import { filmsDataProps } from '../../../toolkit-store/index';
+import { addNewFilmToState } from '../../../toolkit-store/sort-by-slice-reducer';
 
 const genreOptions = [
     {value: 'Comedy', label: 'Comedy', id: 'genres'},
@@ -42,7 +45,11 @@ const validate = ( values: any) => {
     return errors;
 };
 
+const selectFilmsData = ( state: filmsDataProps ) => state.sortBySlice.filmsData;
+
 export const AddMovieForm = ({updateObject, toggleModalState}: any) => {
+    const dispatch = useDispatch();
+    const stateFilmsArray = useSelector(selectFilmsData);
     const [serverError, setServerError] = useState(null)
     const initValueObj = updateObject ? updateObject : {
         title: '',
@@ -60,7 +67,7 @@ export const AddMovieForm = ({updateObject, toggleModalState}: any) => {
         validateOnBlur: false,
         onSubmit: ( values, { setSubmitting }) => {
             const requestOptions = {
-                method: 'POST',
+                method: !!updateObject ? 'PUT' : 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formik.values)
             };
@@ -77,7 +84,8 @@ export const AddMovieForm = ({updateObject, toggleModalState}: any) => {
     
                         return Promise.reject(error);
                     }
-                    toggleModalState()
+                    toggleModalState();
+                    dispatch(addNewFilmToState([...stateFilmsArray, formik.values]));
                 })
                 .catch(error => {
                     console.error('There was an error!', error);

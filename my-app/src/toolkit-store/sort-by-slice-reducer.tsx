@@ -35,8 +35,14 @@ const sortBySlice = createSlice({
     name: 'todos/sortBy',
     initialState,
     reducers: {
-        updateCurrentFilmData(state, action){
+        updateCurrentFilmData(state, action) {
             state.currentFilm = action.payload
+        },
+        deleteFilmFromState(state, action) {
+            state.filmsData = action.payload
+        },
+        addNewFilmToState(state, action) {
+            state.filmsData = action.payload
         }
     },
     extraReducers: builder => {
@@ -51,4 +57,4 @@ const sortBySlice = createSlice({
 })
 
 export default sortBySlice.reducer;
-export const { updateCurrentFilmData } = sortBySlice.actions;
+export const { updateCurrentFilmData, deleteFilmFromState, addNewFilmToState} = sortBySlice.actions;
