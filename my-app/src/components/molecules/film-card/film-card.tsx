@@ -14,6 +14,7 @@ interface FilmCardProps {
     id: number;
     filmId: number;
     className?: string;
+    highlightWord?: string
 }
 
 const selectFilmsData = ( state: filmsDataProps ) => state.sortBySlice.filmsData;
@@ -25,11 +26,15 @@ export const FilmCard = ({
     image,
     id,
     className,
-    filmId
+    filmId,
+    highlightWord
 }: FilmCardProps) => {
     const dispatch = useDispatch();
     const getFilmsData = useSelector(selectFilmsData);
+    // const categoryFullName = `Dfff <b>1212</b>`;
     const categoryFullName = category.toString().replace(/,/g, ' ');
+    // const makeHCategory = (str: string, colorWord: string) => str.replaceAll(colorWord, `<span>${colorWord}</span>`);
+    // const highlightsCategory = highlightWord ? : categoryFullName
 
     const handlerClick = () => {
         dispatch(updateCurrentFilmData(getFilmsData[id]));
@@ -45,7 +50,7 @@ export const FilmCard = ({
             <figcaption className='m-film-card__caption'>
                 <Header size='h3' className='m-film-card__caption-title'>{title}</Header>
                 <span className='m-film-card__caption-year'>{year}</span>
-                <span className='m-film-card__caption-category'>{categoryFullName}</span>
+                <span className='m-film-card__caption-category'>{categoryFullName}</span>`
             </figcaption>
         </figure>
     )
