@@ -21,13 +21,9 @@ const navItems = [
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 export const FilmsBlock = () => {
-    // const [params, setParams] = useSearchParams({});
     const [filmsState, setFilmsState ] = useState();
-    // const { useId } = useParams();
     const searchQuery = useQuery();
     const location = useLocation()
-    // const filmId = params.get('id');
-
     // const filmTitle = searchQuery.get('movie');
     // const searchByFilmTitle = filmTitle ? `movie=${filmTitle}` : null;
 

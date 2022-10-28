@@ -24,7 +24,7 @@ const makeTitleCase = (word: string) => {
 }
 
 export const AllFilms = ({ dataFilms, highlights }: AllFilmsProps,) => {
-    let highlightWord;
+    let highlightWord:string;
     // const dataFilms = useSelector(selectFilmsData)
     // const dispatch = useDispatch<any>();
 
@@ -58,7 +58,7 @@ export const AllFilms = ({ dataFilms, highlights }: AllFilmsProps,) => {
                             image={item.poster_path}
                             id={id}
                             filmId={item.id}
-                            // highlightWord={highlightWord}
+                            highlightWord={highlightWord}
                         />
                     })
                 }
