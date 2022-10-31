@@ -1,17 +1,9 @@
-export const config = {
-    setupFilesAfterEnv: [
-        '@testing-library/react/cleanup-after-each',
-        '@testing-library/jest-dom/extend-expect'
-    ],
-    testMatch: [
-        '**/?(*.)spec.ts?(x)'
-    ],
-    globals: {
-        'ts-jest': {
-            tsConfig: 'tsconfig.json',
-            diagnostics: false,
-        },
-    },
-    testEnvironment: 'jsdom',
+module.exports = {
     preset: 'ts-jest',
-}
+    verbose: true,
+    testEnvironment: 'jsdom',
+    testMatch: ['<rootDir>/src/**/*.test.{js,ts,tsx}'],
+    transform: {
+        '\\.[jt]sx?$': ['babel-jest'],
+    },
+};
