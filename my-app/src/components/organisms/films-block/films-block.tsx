@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import queryString from 'query-string'
 import { Divider } from '../../atoms/divider/divider';
 import { SortBy } from '../../molecules/sort-by/sort-by';
-import { Routes, Route, NavLink, useSearchParams, useParams, useLocation } from 'react-router-dom';
-import { searchFilm } from '../../../utils/searc-film';
+import { Routes, Route, NavLink, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { searchFilmByGenre } from '../../../utils/searc-film';
 import { Comedy } from '../../templates/comedy/comedy';
 import { Crime } from '../../templates/crime/crime';
 import { Documentary } from '../../templates/documentary/documentary';
@@ -11,51 +12,76 @@ import { AllFilms } from '../../templates/all/all';
 import { PageNotFound } from '../../templates/404/404';
 
 const navItems = [
-    { title: 'all', active: false },
-    { title: 'documentary', active: false },
-    { title: 'comedy', active: false },
-    { title: 'Horror', active: false },
-    { title: 'crime', active: false }
+    { title: 'all', active: false.valueOf, path: '/search' },
+    { title: 'documentary', active: false, path: '/documentary' },
+    { title: 'comedy', active: false, path: '/comedy' },
+    { title: 'Horror', active: false, path: '/horror' },
+    { title: 'crime', active: false, path: '/crime' }
 ]
 
-const useQuery = () => new URLSearchParams(useLocation().search);
-
 export const FilmsBlock = () => {
-    const [filmsState, setFilmsState ] = useState();
-    const searchQuery = useQuery();
-    const location = useLocation()
-    // const filmTitle = searchQuery.get('movie');
-    // const searchByFilmTitle = filmTitle ? `movie=${filmTitle}` : null;
+    const [filmsState, setFilmsState] = useState();
+    const [genreType, setGenreType] = useState('');
+    const [sortByData, setSortByData] = useState({ value: '', label: '' });
+    const [genreQueryParams, setGenreQueryParams] = useState('');
+    const [sortByQueryParams, setSortByQueryParams] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const genreType = searchQuery.get('genre');
-    const searchByGenre = genreType ? `&genre=${genreType}` : null;
+    const genreForQuery = navItems.filter(item => {
+        return item.path === location.pathname && item.path !== '/search'
+    });
 
-    const searchBy = searchQuery.get('searchBy');
-    const searchSearchBy = searchBy ? `&searchBy=${searchBy}` : null;
+    const initialFetch = () => {
+        fetch(process.env.filmAPI)
+            .then(res => res.json())
+            .then(res => {
+                const data = res.data;
+                setFilmsState(data);
+            })
+    }
 
-    const sortBy = searchQuery.get('sortBy');
-    const searchSortBy = sortBy ? `&sortBy=${sortBy}` : null;
-    
-    const sortOrder = searchQuery.get('sortOrder');
-    const searchSortOrder = sortOrder ? `&sortOrder=${sortOrder}` : null;
+    useEffect(() => {
+        initialFetch();
+    }, []);
 
+    useEffect(() => {
+        let genre = { genre: '' };
 
-    useEffect( () => {
-        if (genreType || sortBy || searchBy || sortOrder){
-            searchFilm(searchByGenre, searchSearchBy, searchSortBy, searchSortOrder)
-                        .then(res =>{
-                            const data = res.data;
-                            setFilmsState(data)
-                        })  
-        } else if (location.pathname === '/'){
-            fetch(process.env.filmAPI)
-                .then(res => res.json())
+        if (!!genreForQuery.length) {
+            genre.genre = genreForQuery[0].path;
+            const requestParams = queryString.stringify(genre);
+            setGenreQueryParams(requestParams);
+            const redirectUrl = `/search?${requestParams}&${sortByQueryParams}`;
+
+            setGenreType(genreForQuery[0].title);
+            searchFilmByGenre(genreType)
                 .then(res => {
                     const data = res.data;
                     setFilmsState(data);
-                })
+                });
+            navigate(redirectUrl);
         }
-    },[genreType, sortBy, searchSortOrder, sortOrder, location])
+    }, [location.pathname]);
+
+    useEffect(() => {
+        const sortByValue = sortByData ? sortByData?.value : '';
+        const sortBy = {
+            sortBy: sortByValue
+        };
+        const requestParams = queryString.stringify(sortBy);
+        const redirectUrl = `/search?${requestParams}&${genreQueryParams}`;
+    
+        setSortByQueryParams(requestParams)
+        searchFilmByGenre(genreType, sortByValue)
+            .then(res => {
+                const data = res.data;
+                setFilmsState(data);
+            });
+        if (sortByValue) {
+            navigate(redirectUrl);
+        }
+    }, [sortByData]);
 
     return (
         <main className="container o-films-block">
@@ -66,7 +92,7 @@ export const FilmsBlock = () => {
                             return <li key={id} className='m-navigation__item' >
                                 <NavLink
                                     end
-                                    to={`/${item.title === 'all' ? '' : item.title}`}
+                                    to={item.path}
                                     className={({ isActive }) => `a-link  m-navigation__link ${isActive ? 'm-navigation__link--active' : ''}`}
                                 >
                                     {item.title}
@@ -75,12 +101,16 @@ export const FilmsBlock = () => {
                         })}
                     </ul>
                 </nav >
-                <SortBy />
+                <SortBy handler={setSortByData} />
             </div>
             <Divider className='o-films-block__divider' />
 
             <Routes>
-                <Route path="/" element={<AllFilms dataFilms={filmsState} highlights={genreType}/>} />
+                <Route
+                    path="/"
+                    element={<Navigate to="/search" replace />}
+                />
+                <Route path="/search" element={<AllFilms dataFilms={filmsState} highlights={genreType} />} />
                 <Route path="/comedy" element={<Comedy />} />
                 <Route path="/crime" element={<Crime />} />
                 <Route path="/documentary" element={<Documentary />} />
