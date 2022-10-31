@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import sortBySlice from './sort-by-slice-reducer';
 
-interface oneFilmData {
+export interface oneFilmData {
     'id': number;
     'title': string;
     'tagline': string;

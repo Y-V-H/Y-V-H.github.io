@@ -2,21 +2,25 @@ import React from 'react';
 import { clsx } from 'clsx';
 
 interface TextareaProps {
+    onChange?: (event: React.ChangeEvent<HTMLTextAreaElement> ) => void;
     children?: React.ReactNode;
     className?: string;
     label?: string;
     cols?: number;
     rows?: number;
     placeholder?: string;
+    formikValue?: string;
 }
 
 export const Textarea = ({
+    onChange,
     children,
     className,
     label,
     cols = 30,
     rows = 5,
-    placeholder
+    placeholder,
+    formikValue
 }: TextareaProps) => {
     let labelId = '';
 
@@ -34,6 +38,8 @@ export const Textarea = ({
                 rows={rows}
                 className={clsx(`a-textarea ${className}`)}
                 placeholder={placeholder}
+                onChange={onChange}
+                value={formikValue}
             >
                 {children}
             </textarea>

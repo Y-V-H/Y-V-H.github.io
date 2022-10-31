@@ -3,44 +3,51 @@ import { clsx } from 'clsx';
 
 interface InputTextProps {
     className?: string;
-    defaultInputValue?: string;
+    formikValue?: string | number;
     placeholder?: string;
     label?: string;
-    onlyNumber?: boolean
+    onlyNumber?: boolean;
+    formikHandlerChange?: (e: React.ChangeEvent<HTMLInputElement>, r: boolean ) => void;
+    name?: string;
+    formikError?: any;
 }
 
 export const InputText = ({
     className,
-    defaultInputValue,
+    formikValue,
     placeholder,
     label,
-    onlyNumber
+    onlyNumber,
+    formikHandlerChange,
+    name,
+    formikError
 }: InputTextProps) => {
     const [inputValue, setInputValue] = useState('');
-    const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
-    const handlerChangeNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const re = new RegExp('^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$');
-        if (e.target.value === '' || re.test(e.target.value)) {
-            setInputValue(e.target.value)
-        }
+    const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value)
     };
+    const firminkHuermik = (e: React.ChangeEvent<HTMLInputElement>) => {
+        formikHandlerChange(e,onlyNumber)
+    }
     let labelId = '';
 
     if (label) {
-        labelId = label.replace(/\s/g, '')
+        labelId = label.replace(/\s/g, '_')
     }
 
     return (
-        <>
+        <div className={clsx(`a-input-wr ${!!formikError ? 'a-input-wr__with-error' : ''}`)} >
             {label && <label htmlFor={labelId} className='a-input__label'>{label}</label>}
             <input
                 type="text"
-                className={clsx(`a-input ${className}`)}
-                value={defaultInputValue ? defaultInputValue : inputValue}
+                className={clsx(`a-input ${className} ${!!formikError ? 'a-input__error' : ''}`)}
+                value={formikValue ? formikValue : inputValue}
                 placeholder={placeholder}
-                onChange={onlyNumber ? handlerChangeNumber : handlerChange}
+                onChange={formikHandlerChange ? firminkHuermik : handlerChange}
                 id={labelId ? labelId : null}
+                name={name}
             />
-        </>
+            {true ? <span className='a-input_error-message'>{formikError}</span> : null}
+        </div>
     )
 }

@@ -1,4 +1,3 @@
-import { eventNames } from 'process';
 import React from 'react';
 import { ReactPortal } from '../../../utils/react-portal'
 import { Button } from '../../atoms/button/button';
@@ -9,12 +8,12 @@ interface ModalProps {
     children: React.ReactNode;
     title: string;
     titleType: string;
-    isModalOpen: (t: boolean) => void;
+    toggleModalOpen: (t: boolean) => void;
 }
 
-export const Modal = ({ isOpen, children, title, titleType, isModalOpen, }: ModalProps) => {
+export const Modal = ({ isOpen, children, title, titleType,  toggleModalOpen, }: ModalProps) => {
     const handlerClick = (event: React.MouseEvent) => {
-        isModalOpen(false);
+        toggleModalOpen(false);
         event.stopPropagation()
     };
 

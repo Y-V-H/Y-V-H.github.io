@@ -1,0 +1,47 @@
+@import '../../_settings/variables';
+
+.m-update-film {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: $raisin-black;
+    z-index: 1;
+}
+
+.m-update-film__close-btn {
+    background-color: inherit;
+    border: 0;
+    color: $white;
+    font-size: 10px;
+    padding: 2px 6px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.m-update-film__list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.m-update-film__list-btn {
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 4px;
+    border-radius: 0;
+    padding-left: 12px;
+}
+
+.m-update-film__list-btn:hover {
+    background: $infra-red;
+}
+
