@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import { Navigation } from '../../molecules/navigation/navigation';
 // import { Divider } from '../../atoms/divider/divider';
 import { FilmCard } from '../../molecules/film-card/film-card';
@@ -10,7 +10,7 @@ import { filmsDataProps, oneFilmData } from '../../../toolkit-store/index';
 
 // const selectFilmsData = (state: filmsDataProps) => state.sortBySlice.filmsData;
 
-interface AllFilmsProps {
+export interface AllFilmsProps {
     dataFilms: oneFilmData[];
     highlights?: string
 }
