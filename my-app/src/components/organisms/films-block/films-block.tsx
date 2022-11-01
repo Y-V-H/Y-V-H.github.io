@@ -22,7 +22,7 @@ const navItems = [
 export const FilmsBlock = () => {
     const [filmsState, setFilmsState] = useState();
     const [genreType, setGenreType] = useState('');
-    const [sortByData, setSortByData] = useState({ value: '', label: '' });
+    const [sortByData, setSortByData] = useState<{ value: '', label: '' }>();
     const [genreQueryParams, setGenreQueryParams] = useState('');
     const [sortByQueryParams, setSortByQueryParams] = useState('');
     const location = useLocation();
@@ -51,9 +51,9 @@ export const FilmsBlock = () => {
         if (!!genreForQuery.length) {
             genre.genre = genreForQuery[0].path;
             const requestParams = queryString.stringify(genre);
-            setGenreQueryParams(requestParams);
             const redirectUrl = `/search?${requestParams}&${sortByQueryParams}`;
-
+            
+            setGenreQueryParams(requestParams);
             setGenreType(genreForQuery[0].title);
             searchFilmByGenre(genreType)
                 .then(res => {
@@ -61,24 +61,28 @@ export const FilmsBlock = () => {
                     setFilmsState(data);
                 });
             navigate(redirectUrl);
+        } else if (location.pathname === '/search' && location.search === '') {
+            initialFetch();
         }
-    }, [location.pathname]);
+    }, [location]);
 
     useEffect(() => {
         const sortByValue = sortByData ? sortByData?.value : '';
-        const sortBy = {
-            sortBy: sortByValue
-        };
-        const requestParams = queryString.stringify(sortBy);
-        const redirectUrl = `/search?${requestParams}&${genreQueryParams}`;
-    
-        setSortByQueryParams(requestParams)
-        searchFilmByGenre(genreType, sortByValue)
-            .then(res => {
-                const data = res.data;
-                setFilmsState(data);
-            });
+
         if (sortByValue) {
+            const sortByRequestData = {
+                sortBy: sortByValue
+            };
+            const requestParams = queryString.stringify(sortByRequestData);
+            const redirectUrl = `/search?${requestParams}&${genreQueryParams}`;
+
+            setSortByQueryParams(requestParams)
+            searchFilmByGenre(genreType, sortByValue)
+                .then(res => {
+                    const data = res.data;
+                    setFilmsState(data);
+                });
+
             navigate(redirectUrl);
         }
     }, [sortByData]);
