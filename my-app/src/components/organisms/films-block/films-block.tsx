@@ -55,7 +55,7 @@ export const FilmsBlock = () => {
             
             setGenreQueryParams(requestParams);
             setGenreType(genreForQuery[0].title);
-            searchFilmByGenre(genreType)
+            searchFilmByGenre(genreForQuery[0].title)
                 .then(res => {
                     const data = res.data;
                     setFilmsState(data);
