@@ -1,14 +1,6 @@
-import React, { useEffect } from 'react';
-// import { Navigation } from '../../molecules/navigation/navigation';
-// import { Divider } from '../../atoms/divider/divider';
+import React from 'react';
 import { FilmCard } from '../../molecules/film-card/film-card';
-// import { SortBy } from '../../molecules/sort-by/sort-by';
-
-// import { useSelector, useDispatch } from 'react-redux';
-// import { getMoviesFetch } from '../../../toolkit-store/sort-by-slice-reducer';
-import { filmsDataProps, oneFilmData } from '../../../toolkit-store/index';
-
-// const selectFilmsData = (state: filmsDataProps) => state.sortBySlice.filmsData;
+import { oneFilmData } from '../../../toolkit-store/index';
 
 interface AllFilmsProps {
     dataFilms: oneFilmData[];
@@ -25,12 +17,6 @@ const makeTitleCase = (word: string) => {
 
 export const AllFilms = ({ dataFilms, highlights }: AllFilmsProps,) => {
     let highlightWord:string;
-    // const dataFilms = useSelector(selectFilmsData)
-    // const dispatch = useDispatch<any>();
-
-    // useEffect(() => {
-    // dispatch(getMoviesFetch())
-    // }, []);
 
     if (!dataFilms) {
         return null;

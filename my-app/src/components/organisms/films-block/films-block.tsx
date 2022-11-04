@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import queryString from 'query-string'
 import { Divider } from '../../atoms/divider/divider';
 import { SortBy } from '../../molecules/sort-by/sort-by';
-import { Routes, Route, NavLink, useNavigate, useLocation, Navigate } from 'react-router-dom';
+// import { Routes, Route, NavLink, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { searchFilmByGenre } from '../../../utils/searc-film';
 import { Comedy } from '../../templates/comedy/comedy';
 import { Crime } from '../../templates/crime/crime';
@@ -19,73 +19,97 @@ const navItems = [
     { title: 'crime', active: false, path: '/crime' }
 ]
 
-export const FilmsBlock = () => {
+// export const getStaticProps = async () => {
+//     const response = await fetch('http://localhost:4000/movies');
+//     const data = await response.json();
+// console.log(data, "data");
+//     return {
+//         props: {movies: data}
+//     }
+//   }
+
+// export async function getServerSideProps(context: any) {
+//     const response = await fetch('http://localhost:4000/movies');
+//     const data = await response.json();
+
+//     return {
+//         props: {data: data}, // will be passed to the page component as props
+//     }
+// }
+
+export const FilmsBlock = ({ data }: any) => {
     const [filmsState, setFilmsState] = useState();
     const [genreType, setGenreType] = useState('');
     const [sortByData, setSortByData] = useState<{ value: '', label: '' }>();
     const [genreQueryParams, setGenreQueryParams] = useState('');
     const [sortByQueryParams, setSortByQueryParams] = useState('');
-    const location = useLocation();
-    const navigate = useNavigate();
+    // const location = useLocation();
+    // const navigate = useNavigate();
 
-    const genreForQuery = navItems.filter(item => {
-        return item.path === location.pathname && item.path !== '/search'
-    });
+    const genreForQuery = false;
+    // = navItems.filter(item => {
+    //     return item.path === location.pathname && item.path !== '/search'
+    // });
 
-    const initialFetch = () => {
-        fetch(process.env.filmAPI)
-            .then(res => res.json())
-            .then(res => {
-                const data = res.data;
-                setFilmsState(data);
-            })
+    const initialFetch = async () => {
+        // const response = await fetch(`${process.env.APP_MOVIE_API}`);
+        // const response = await fetch('http://localhost:4000/movies');
+        // const data = await response.json()
+        
+        // setFilmsState(data.data);
     }
+    // console.log(typeof(process.env.APP_MOVIE_API), '1111111111111111111111111111')
+
 
     useEffect(() => {
         initialFetch();
     }, []);
+    // console.log(process.env.APP_MOVIE_API, "APP_MOVIE_API")
+    // console.log(process.env.DB_HOST, "DB_HOST")
 
     useEffect(() => {
         let genre = { genre: '' };
 
-        if (!!genreForQuery.length) {
-            genre.genre = genreForQuery[0].path;
-            const requestParams = queryString.stringify(genre);
-            const redirectUrl = `/search?${requestParams}&${sortByQueryParams}`;
+        // if (!!genreForQuery.length) {
+        //     genre.genre = genreForQuery[0].path;
+        //     const requestParams = queryString.stringify(genre);
+        //     const redirectUrl = `/search?${requestParams}&${sortByQueryParams}`;
             
-            setGenreQueryParams(requestParams);
-            setGenreType(genreForQuery[0].title);
-            searchFilmByGenre(genreType)
-                .then(res => {
-                    const data = res.data;
-                    setFilmsState(data);
-                });
-            navigate(redirectUrl);
-        } else if (location.pathname === '/search' && location.search === '') {
-            initialFetch();
-        }
-    }, [location]);
+        //     setGenreQueryParams(requestParams);
+        //     setGenreType(genreForQuery[0].title);
+        //     searchFilmByGenre(genreType)
+        //         .then(res => {
+        //             const data = res.data;
+        //             setFilmsState(data);
+        //         });
+        //     // navigate(redirectUrl);
+        // }
+        // else if (location.pathname === '/search' && location.search === '') {
+        //     initialFetch();
+        // }
+    // }, [location]);
+    }, []);
 
-    useEffect(() => {
-        const sortByValue = sortByData ? sortByData?.value : '';
+    // useEffect(() => {
+    //     const sortByValue = sortByData ? sortByData?.value : '';
 
-        if (sortByValue) {
-            const sortByRequestData = {
-                sortBy: sortByValue
-            };
-            const requestParams = queryString.stringify(sortByRequestData);
-            const redirectUrl = `/search?${requestParams}&${genreQueryParams}`;
+    //     if (sortByValue) {
+    //         const sortByRequestData = {
+    //             sortBy: sortByValue
+    //         };
+    //         const requestParams = queryString.stringify(sortByRequestData);
+    //         const redirectUrl = `/search?${requestParams}&${genreQueryParams}`;
 
-            setSortByQueryParams(requestParams)
-            searchFilmByGenre(genreType, sortByValue)
-                .then(res => {
-                    const data = res.data;
-                    setFilmsState(data);
-                });
+    //         setSortByQueryParams(requestParams)
+    //         searchFilmByGenre(genreType, sortByValue)
+    //             .then(res => {
+    //                 const data = res.data;
+    //                 setFilmsState(data);
+    //             });
 
-            navigate(redirectUrl);
-        }
-    }, [sortByData]);
+    //         // navigate(redirectUrl);
+    //     }
+    // }, [sortByData]);
 
     return (
         <main className="container o-films-block">
@@ -94,22 +118,22 @@ export const FilmsBlock = () => {
                     <ul className='m-navigation__block'>
                         {navItems.map((item, id) => {
                             return <li key={id} className='m-navigation__item' >
-                                <NavLink
+                                {/* <NavLink
                                     end
                                     to={item.path}
                                     className={({ isActive }) => `a-link  m-navigation__link ${isActive ? 'm-navigation__link--active' : ''}`}
                                 >
                                     {item.title}
-                                </NavLink>
+                                </NavLink> */}
                             </li>
                         })}
                     </ul>
                 </nav >
-                <SortBy handler={setSortByData} />
+                {/* <SortBy handler={setSortByData} /> */}
             </div>
             <Divider className='o-films-block__divider' />
 
-            <Routes>
+            {/* <Routes>
                 <Route
                     path="/"
                     element={<Navigate to="/search" replace />}
@@ -120,7 +144,8 @@ export const FilmsBlock = () => {
                 <Route path="/documentary" element={<Documentary />} />
                 <Route path="/horror" element={<Horror />} />
                 <Route path="*" element={<PageNotFound />} />
-            </Routes>
+            </Routes> */}
+            <AllFilms dataFilms={data} highlights={genreType} />
         </main>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+// import { Routes, Route, Link } from 'react-router-dom';
 import { Comedy } from '../../templates/comedy/comedy';
 import { Crime } from '../../templates/crime/crime';
 import { Documentary } from '../../templates/documentary/documentary';
@@ -21,12 +21,12 @@ export const Navigation = () => {
                 <ul className='m-navigation__block'>
                     {navItems.map((item, id) => {
                         return <li key={id} className='m-navigation__item' >
-                            <Link
+                            {/* <Link
                                 to={`/${item.title === 'all' ? '' : item.title  }`}
                                 className={`a-link  m-navigation__link ${item.active ? 'm-navigation__link--active' : ''}`}
                             >
                                 {item.title}
-                            </Link>
+                            </Link> */}
                         </li>
                     })}
                 </ul>
