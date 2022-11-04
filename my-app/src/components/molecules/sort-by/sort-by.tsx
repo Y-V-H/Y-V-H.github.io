@@ -9,17 +9,17 @@ const options = [
     {value: 'release date', label: 'Release date'}
 ]
 
-export const SortBy = () => {
-    const dispatch = useDispatch<any>();
+export const SortBy = ({handler}: any) => {
+    // const dispatch = useDispatch<any>();
 
-    const handleChange = async (selectOption: {value: string, label: string}) => {
-        dispatch( sortByMoviesFetch(selectOption.value) );
-    }
+    // const handleChange = async (selectOption: {value: string, label: string}) => {
+    //     dispatch( sortByMoviesFetch(selectOption.value) );
+    // }
 
     return (
         <div className="m-sort-by">
             <span className="m-sort-by__text">SORT BY</span>
-            <CustomSelect handleChange={handleChange} options={options}/>
+            <CustomSelect handleChange={handler} options={options}/>
         </div>
     )
 } 
