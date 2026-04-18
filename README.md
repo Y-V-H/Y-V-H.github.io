@@ -71,7 +71,7 @@ in memory (Zustand) to avoid hitting LocalStorage quota.
  
 | Desktop | Mobile |
 |---|---|
-| ![Desktop](https://github.com/user-attachments/assets/4de0f9ad-4471-49a6-b9f9-960762b34f25) | ![Mobile](https://github.com/user-attachments/assets/59cac8f2-267f-4c1e-b045-7f3558403a9c) |
+| ![Desktop](./desk.png) | ![Mobile](./mob.png) |
  
 ---
  
