@@ -6,7 +6,7 @@
  
 **[Live Demo →](https://y-v-h.github.io/)**
  
-![Local Spotter Screenshot]()
+![Local Spotter Screenshot](./demo.gif)
  
 ---
  
