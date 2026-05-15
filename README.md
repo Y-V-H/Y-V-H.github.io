@@ -4,7 +4,9 @@
 > Find sports clubs, art schools, libraries and more on an interactive map.
 > Built for parents who want to explore what a neighbourhood has to offer their kids.
  
-**[Live Demo →](https://y-v-h.github.io/)**
+**[Live Demo for PL →](https://y-v-h.github.io/)**
+
+**[Live Demo for BY →](https://y-v-h.github.io/by)**
  
 ![Local Spotter Screenshot](./demo.gif)
  
