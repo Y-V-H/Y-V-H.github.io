@@ -22,7 +22,7 @@ Key features:
 - **Cluster view** — markers group automatically at lower zoom levels
 - **Multi-config build** — the project supports multiple regional deployments 
   via separate build scripts (`npm run build:pl` / `npm run build:by`). 
-  Currently live version is configured for Poland.
+  Demo links for both versions are above.
 - **OSM mirror fallback** — requests automatically retry across 3 mirrors; user sees an error only when all mirrors are unavailable
 - **Responsive** — works on desktop and mobile
 ---
@@ -79,7 +79,7 @@ in memory (Zustand) to avoid hitting LocalStorage quota.
  
 ## 🔮 Roadmap
  
-- [ ] To be continued 😎
+- [ ] Investigate faster alternatives to OSM mirror fallback
 ---
  
 ## 📬 Contact
