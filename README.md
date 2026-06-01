@@ -4,9 +4,9 @@
 > Find sports clubs, art schools, libraries and more on an interactive map.
 > Built for parents who want to explore what a neighbourhood has to offer their kids.
  
-**[Live Demo for PL →](https://y-v-h.github.io/)**
+**[Current version (Poland) - dedicated API, PostGIS, and cached data → Live Demo](https://y-v-h.github.io/)**
 
-**[Live Demo for BY →](https://y-v-h.github.io/by)**
+**[Initial MVP (Belarus) - direct requests to public OSM mirrors → Live Demo](https://y-v-h.github.io/by)**
  
 ![Local Spotter Screenshot](./demo.gif)
  
@@ -14,17 +14,17 @@
  
 ## 🚀 What it does
  
-Local Spotter helps users find places nearby — sports facilities, art schools, libraries, coworking spaces and more — by filtering categories on an interactive map.
+Local Spotter is a map-based application designed to help people explore neighborhoods and discover nearby places such as sports facilities, schools, libraries, parks, and coworking spaces.
  
 Key features:
 - **20+ categories** across Sport, Creative, Education and Infrastructure
 - **Click on any marker** to see address, phone, website and wheelchair accessibility
-- **Cluster view** — markers group automatically at lower zoom levels
-- **Multi-config build** — the project supports multiple regional deployments 
+- **Cluster view** - automatically groups markers at lower zoom levels
+- **Multi-config build** - the project supports multiple regional deployments 
   via separate build scripts (`npm run build:pl` / `npm run build:by`). 
   Demo links for both versions are above.
-- **OSM mirror fallback** — requests automatically retry across 3 mirrors; user sees an error only when all mirrors are unavailable
-- **Responsive** — works on desktop and mobile
+- **Own API** - normalized POI data served from a dedicated backend; Overpass calls and mirror fallback are handled server-side, so the user sees neither latency spikes nor mirror errors
+- **Responsive** - works on desktop and mobile
 ---
  
 ## 🛠️ Tech Stack
@@ -41,7 +41,7 @@ Key features:
 | Caching | LocalStorage (geocoding) / Zustand (map nodes) |
 | Component library | Custom (no UI library) |
 | Component docs | Storybook |
-| Deploy | GitHub Pages |
+| BE | NestJS + PostGIS |
  
 ---
  
@@ -51,21 +51,12 @@ Key features:
 **Data flow:**
 
 1. On first load, the map centers on the capital city by default
-2. User can start exploring immediately or search for another city — 
-   search works for major cities in both Poland and Belarus
-3. When a category filter is selected, a query is sent to an OSM mirror via Overpass API
-4. Raw data is **normalized** before being saved to the store
-5. Results are stored in Zustand per city — if the user switches cities, 
-   previous markers are removed from the map but **stay cached in the store**
-6. Markers are **clustered** automatically based on zoom level
-
-**Mirror fallback strategy:**
-If mirror 1 fails → retry on mirror 2 → mirror 3 → show error to user
-
-**Why LocalStorage only for geocoding:**  
-Geocoding results (city coordinates) are small and stable — perfect for LocalStorage.  
-OSM node data can contain thousands of objects per query, so it lives only 
-in memory (Zustand) to avoid hitting LocalStorage quota.
+2. Users can start exploring immediately or search for another city within the currently selected country.
+3. When a category filter is selected, a request is sent to the Local Spotter API, which returns normalized POI data for the selected category.
+4. The API returns normalized data, which is then cached in Zustand for faster client-side interactions.
+5. Successful Photon geocoding responses are cached in Zustand and stored in localStorage, allowing repeated searches to be served locally instead of querying the public Photon service again.
+6. If the user switches cities, previous markers are removed from the map but **stay cached in the store**
+7. Markers are **clustered** automatically based on zoom level
  
 ---
  
@@ -79,7 +70,8 @@ in memory (Zustand) to avoid hitting LocalStorage quota.
  
 ## 🔮 Roadmap
  
-- [ ] Investigate faster alternatives to OSM mirror fallback
+- [x] Investigate faster alternatives to OSM mirror fallback
+- [ ] Add neighborhood analysis features
 ---
  
 ## 📬 Contact
