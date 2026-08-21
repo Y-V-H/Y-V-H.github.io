@@ -4,9 +4,9 @@
 > Find sports clubs, art schools, libraries and more on an interactive map.
 > Built for parents who want to explore what a neighbourhood has to offer their kids.
  
-**[Current version (Poland) - dedicated API, PostGIS, and cached data → Live Demo](https://y-v-h.github.io/)**
+**[Current Release (Poland)](https://local-spotter.com)**
 
-**[Initial MVP (Belarus) - direct requests to public OSM mirrors → Live Demo](https://y-v-h.github.io/by)**
+**[Initial MVP (Belarus) - direct requests to public OSM mirrors → Live Demo](https://y-v-h.github.io)**
  
 ![Local Spotter Screenshot](./demo.gif)
  
